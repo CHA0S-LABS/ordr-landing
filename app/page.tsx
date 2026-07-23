@@ -179,14 +179,14 @@ export default function Home() {
 
                 <nav
                   aria-label="Primary"
-                  className="flex items-center gap-5 sm:gap-9"
+                  className="hidden items-center gap-9 sm:flex"
                 >
                   {NAV_LINKS.map((link) => (
                     <a
                       key={link.label}
                       href={link.href}
                       target="_"
-                      className={`text-xs font-medium text-stone-100/90 transition-colors hover:text-white sm:text-sm ${FOCUS_RING}`}
+                      className={`text-sm font-medium text-stone-100/90 transition-colors hover:text-white ${FOCUS_RING}`}
                     >
                       {link.label}
                     </a>
