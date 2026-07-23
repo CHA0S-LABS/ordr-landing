@@ -1,65 +1,109 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import { Highlighter } from "@/components/ui/highlighter";
+import { GlassButton } from "@/components/ui/glass-button";
+
+const NAV_LINKS = [
+  { label: "Protocol", href: "#protocol" },
+  { label: "Team", href: "#team" },
+  { label: "Twitter", href: "https://twitter.com/ordrdottrade" },
+  { label: "Blog", href: "#blog" },
+];
+
+const FOCUS_RING =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 rounded-sm";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <div className="flex min-h-screen flex-col px-4 py-6 sm:px-6 sm:py-8">
+      <section className="relative flex flex-1 flex-col overflow-hidden rounded-[28px] bg-neutral-950">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="/assets/hero.png"
+          alt=""
+          fill
           priority
+          sizes="100vw"
+          className="object-cover"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+
+        <div className="relative flex flex-1 flex-col">
+          <header className="flex items-center justify-between px-6 py-6 sm:px-10 sm:py-8">
+            <Link
+              href="/"
+              className={`flex items-center gap-2.5 ${FOCUS_RING}`}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              <Image
+                src="/logo.png"
+                alt="ordr"
+                width={40}
+                height={40}
+                className="h-8 w-8 rounded-full object-cover"
+              />
+              <span className="text-lg font-bold tracking-wide text-stone-50">
+                ORDR
+              </span>
+            </Link>
+
+            <nav
+              aria-label="Primary"
+              className="flex items-center gap-5 sm:gap-9"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_"
+                  className={`text-xs font-medium text-stone-100/90 transition-colors hover:text-white sm:text-sm ${FOCUS_RING}`}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </header>
+
+          <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
+            <span className="mb-6 inline-flex items-center rounded-md border border-amber-400/20 bg-black/40 px-3 py-1 font-mono text-[11px] text-amber-300 sm:text-xs">
+              PUBLIC MAINNET COMING SOON
+            </span>
+
+            <h1 className="max-w-3xl text-4xl font-medium leading-[1.05] tracking-tight text-stone-50 sm:text-6xl lg:text-7xl">
+              Open Market
+              <br />
+              Making On{" "}
+              <span className="font-serif italic text-amber-400">
+                Solana.
+              </span>
+            </h1>
+
+            <p className="mt-6 max-w-xl text-sm leading-relaxed text-stone-300/85 sm:text-base">
+              A{" "}
+              <Highlighter action="underline" color="#fbbf24" strokeWidth={2}>
+                fully on chain
+              </Highlighter>{" "}
+              order book exchange on Solana that gives market makers their own
+              private accounts, cheap repricing, and protection from toxic
+              arbitrage.
+            </p>
+
+            <GlassButton
+              className="mt-8"
+              contentClassName="flex items-center gap-2"
+            >
+              Talk to us
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </GlassButton>
+          </div>
+
+          <div className="flex flex-col items-center gap-2 pb-10 text-stone-400">
+            <span className="text-xs">Scroll to Discover</span>
+            <ChevronDown
+              className="h-4 w-4 motion-safe:animate-bounce"
+              aria-hidden="true"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
-      </main>
+      </section>
     </div>
   );
 }
