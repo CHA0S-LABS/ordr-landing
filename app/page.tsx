@@ -147,330 +147,339 @@ const FOOTER_LINK = `text-base text-[#84878b] transition-colors hover:text-stone
 export default function Home() {
   return (
     <>
-    <main>
-      <div className="flex min-h-screen flex-col px-4 py-6 sm:px-6 sm:py-8">
-        <section className="relative flex flex-1 flex-col overflow-hidden rounded-[28px] bg-neutral-950">
-          <Image
-            src="/assets/hero.png"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+      <main>
+        <div className="flex min-h-screen flex-col px-4 py-6 sm:px-6 sm:py-8">
+          <section className="relative flex flex-1 flex-col overflow-hidden rounded-[28px] bg-neutral-950">
+            <Image
+              src="/assets/hero.png"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
 
-          <div className="relative flex flex-1 flex-col">
-            <header className="flex items-center justify-between px-6 py-6 sm:px-10 sm:py-8">
-              <Link
-                href="/"
-                className={`flex items-center gap-2.5 ${FOCUS_RING}`}
-              >
-                <Image
-                  src="/logo.png"
-                  alt="ordr"
-                  width={40}
-                  height={40}
-                  className="h-8 w-8 rounded-full object-cover"
-                />
-                <span className="text-lg font-bold tracking-wide text-stone-50">
-                  ORDR
+            <div className="relative flex flex-1 flex-col">
+              <header className="flex items-center justify-between px-6 py-6 sm:px-10 sm:py-8">
+                <Link
+                  href="/"
+                  className={`flex items-center gap-2.5 ${FOCUS_RING}`}
+                >
+                  <Image
+                    src="/logo.png"
+                    alt="ordr"
+                    width={40}
+                    height={40}
+                    className="h-8 w-8 rounded-full object-cover"
+                  />
+                  <span className="text-lg font-bold tracking-wide text-stone-50">
+                    ORDR
+                  </span>
+                </Link>
+
+                <nav
+                  aria-label="Primary"
+                  className="flex items-center gap-5 sm:gap-9"
+                >
+                  {NAV_LINKS.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_"
+                      className={`text-xs font-medium text-stone-100/90 transition-colors hover:text-white sm:text-sm ${FOCUS_RING}`}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </nav>
+              </header>
+
+              <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
+                <span className={`mb-6 ${EYEBROW}`}>
+                  PUBLIC MAINNET COMING SOON
                 </span>
-              </Link>
 
-              <nav
-                aria-label="Primary"
-                className="flex items-center gap-5 sm:gap-9"
+                <h1 className="max-w-3xl text-4xl font-medium leading-[1.05] tracking-tight text-[#dddcd1] sm:text-6xl lg:text-7xl">
+                  <span className="block">Open Market</span>
+                  <span className="mt-3 block sm:mt-4">
+                    Making On <span className="text-amber-400">Solana.</span>
+                  </span>
+                </h1>
+
+                <p className="mt-6 max-w-xl text-sm leading-relaxed text-stone-300/85 sm:text-base">
+                  A{" "}
+                  <Highlighter
+                    action="underline"
+                    color="#fbbf24"
+                    strokeWidth={2}
+                  >
+                    fully on chain
+                  </Highlighter>{" "}
+                  order book exchange on Solana that gives market makers their
+                  own private accounts, cheap repricing, and protection from
+                  toxic arbitrage.
+                </p>
+
+                <GlassButton
+                  className="mt-8"
+                  contentClassName="flex items-center gap-2"
+                >
+                  Talk to us
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </GlassButton>
+              </div>
+
+              <div className="flex flex-col items-center gap-2 pb-10 text-stone-400">
+                <span className="text-xs">Scroll to Discover</span>
+                <ChevronDown
+                  className="h-4 w-4 motion-safe:animate-bounce"
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section className="px-6 pb-16 pt-10 sm:px-10 sm:pt-16 lg:px-16">
+          <div className="mx-auto flex max-w-[1312px] flex-col items-center gap-6 rounded-2xl bg-white/[0.03] px-6 py-6 sm:flex-row sm:justify-between sm:px-10">
+            <span className="whitespace-nowrap text-xs font-medium uppercase tracking-widest text-stone-500">
+              Trusted by
+            </span>
+            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+              {TRUSTED_BY.map((brand) => (
+                <div
+                  key={brand.name}
+                  className="flex items-center gap-2 opacity-60 transition-opacity hover:opacity-100"
+                >
+                  <Image
+                    src={brand.src}
+                    alt={brand.hasWordmark ? brand.name : ""}
+                    aria-hidden={brand.hasWordmark ? undefined : true}
+                    width={brand.width}
+                    height={brand.height}
+                    className={
+                      brand.chip
+                        ? "h-6 w-6 rounded-full object-cover sm:h-7 sm:w-7"
+                        : `h-5 w-auto sm:h-6 ${brand.invert ? "brightness-0 invert" : ""}`
+                    }
+                  />
+                  {!brand.hasWordmark && (
+                    <span className="text-base font-semibold text-stone-200 sm:text-lg">
+                      {brand.name}
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="protocol"
+          className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16"
+        >
+          <div className="mx-auto max-w-[1312px]">
+            <span className={MONO_BADGE}>Protocol</span>
+
+            <h2 className="mt-6 max-w-xl text-4xl font-medium leading-[1.05] tracking-tight text-[#dddcd1] sm:text-5xl lg:text-6xl">
+              Built for the
+              <br />
+              <span className="font-playfair font-normal text-[#ab7610]">
+                real bottleneck
+              </span>
+            </h2>
+
+            <p className="mt-6 max-w-xl text-sm leading-relaxed text-stone-300/85 sm:text-base">
+              PropAMMs are the gold standard for liquidity on Solana, but they
+              are a closed club. Operated by single teams with proprietary
+              infrastructure, locked behind years of custom engineering.
+            </p>
+
+            <div className="mt-14 grid grid-cols-[minmax(0,406px)] gap-6 sm:grid-cols-[repeat(2,minmax(0,406px))] lg:grid-cols-[repeat(3,minmax(0,406px))]">
+              {PROTOCOL_FEATURES.map((feature) => (
+                <div
+                  key={feature.title}
+                  className="feature-card-glow flex aspect-[203/181] flex-col justify-center gap-6 rounded-[46px] px-10 py-8 sm:px-[53px]"
+                >
+                  <h3 className="font-grotesque text-3xl font-semibold tracking-[-0.97px] text-[#e8e8e8] sm:text-4xl lg:text-[50px] lg:leading-[60px]">
+                    {feature.title}
+                  </h3>
+                  <p className="font-grotesque text-lg leading-7 tracking-[0.24px] text-[#e8e8e8] lg:text-[24px] lg:leading-8">
+                    {feature.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="team" className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
+          <div className="mx-auto max-w-[1312px]">
+            <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <span className={MONO_BADGE}>Our Teams</span>
+                <h2 className="font-geist mt-6 max-w-md text-4xl font-medium leading-[1.05] tracking-tight text-[#f6f4e8] sm:text-5xl lg:text-6xl lg:tracking-[-3px]">
+                  Meet the Experts
+                </h2>
+              </div>
+              <p className="font-geist max-w-sm text-sm leading-relaxed tracking-[-0.32px] text-white/90 sm:text-base">
+                Core contributors dedicated to building reliable infrastructure
+                for the Solana ecosystem
+              </p>
+            </div>
+
+            <div className="mt-14 grid grid-cols-[minmax(0,320px)] gap-[22px] sm:grid-cols-[repeat(2,minmax(0,320px))] lg:grid-cols-[repeat(4,minmax(0,320px))]">
+              {TEAM.map((member) => (
+                <div
+                  key={member.name}
+                  className="relative aspect-[320/535] w-full overflow-hidden rounded-[34px] border border-white/5"
+                >
+                  <Image
+                    src={member.src}
+                    alt={member.name}
+                    fill
+                    sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/10" />
+                  <div className="absolute inset-x-0 bottom-8 flex flex-col items-center px-4 text-center">
+                    <p className="font-sora text-[28px] font-semibold leading-relaxed text-[#fffcfc]">
+                      {member.name}
+                    </p>
+                    <p className="font-geist text-base tracking-[-0.32px] text-white/80">
+                      {member.role}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="blog" className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
+          <div className="mx-auto flex max-w-[1312px] flex-col items-center gap-[76px]">
+            <div className="flex flex-col items-center gap-[18px] text-center">
+              <span className={MONO_BADGE}>Vision</span>
+              <h2 className="font-geist text-4xl font-medium leading-[1.05] tracking-tight text-[#f6f4e8] sm:text-5xl lg:text-6xl lg:tracking-[-3px]">
+                Articles
+              </h2>
+              <p className="font-geist text-sm tracking-[-0.28px] text-white/80">
+                Our latest thinking on markets, protocol design, and Solana
+                infrastructure.
+              </p>
+            </div>
+
+            <div className="grid w-full grid-cols-[minmax(0,400px)] justify-center gap-6 sm:grid-cols-[repeat(2,minmax(0,400px))] lg:grid-cols-[repeat(3,minmax(0,400px))]">
+              {ARTICLES.map((article) => (
+                <a
+                  key={article.title}
+                  href={article.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`group flex h-full flex-col rounded-[34px] border border-white/5 bg-white/5 p-[13px] transition-colors hover:border-amber-400/20 hover:bg-white/[0.07] ${FOCUS_RING}`}
+                >
+                  <div className="relative h-[260px] w-full overflow-hidden rounded-[20px] sm:h-[300px]">
+                    <Image
+                      src={article.src}
+                      alt={article.title}
+                      fill
+                      sizes="(min-width: 1024px) 400px, (min-width: 640px) 45vw, 90vw"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
+                  </div>
+
+                  <div className="mt-5 flex flex-1 flex-col">
+                    <p className="font-sora text-base font-semibold text-stone-50">
+                      {article.title}
+                    </p>
+
+                    <div className="font-geist mt-auto flex items-center justify-between pt-6 text-sm tracking-[-0.28px] text-stone-300/80">
+                      <span className="inline-flex items-center gap-2 transition-colors group-hover:text-amber-300">
+                        Read more
+                        <ArrowUpRight
+                          className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                          aria-hidden="true"
+                        />
+                      </span>
+                      <span className="text-[10px] text-white/50">
+                        {article.date}
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
+          <div className="mx-auto max-w-[1312px]">
+            <div className="cta-banner-glow flex flex-col items-start gap-8 overflow-hidden rounded-[10px] px-8 py-10 sm:h-[164px] sm:flex-row sm:items-center sm:justify-between sm:px-12 sm:py-0">
+              <h2 className="font-geist capitalize text-4xl font-medium leading-[1.05] tracking-tight text-[#f6f4e8] sm:text-5xl lg:text-6xl lg:tracking-[-3px]">
+                Get early access
+              </h2>
+
+              <button
+                type="button"
+                className={`group inline-flex shrink-0 items-center gap-3 rounded-full bg-[rgba(13,30,49,0.2)] py-[7px] pl-6 pr-[7px] backdrop-blur-sm ${FOCUS_RING}`}
               >
-                {NAV_LINKS.map((link) => (
+                <span className="font-geist text-[17px] font-medium tracking-[-0.34px] text-[#f7f2ec]">
+                  Get Access
+                </span>
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f7f2ec] text-[#161512] transition-transform group-hover:translate-x-0.5">
+                  <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                </span>
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="bg-[#10100e] px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
+        <div className="mx-auto flex max-w-[1312px] flex-col gap-16 sm:flex-row sm:items-start sm:justify-between">
+          <div className="flex flex-col gap-7">
+            <Link
+              href="/"
+              className={`flex items-center gap-2.5 ${FOCUS_RING}`}
+            >
+              <Image
+                src="/logo.png"
+                alt=""
+                aria-hidden="true"
+                width={44}
+                height={44}
+                className="h-11 w-11 rounded-full object-cover"
+              />
+              <span className="font-mono text-2xl uppercase tracking-[0.72px] text-white">
+                ordr
+              </span>
+            </Link>
+            <p className="text-base text-[#84878b]">© 2026 ordr.trade</p>
+          </div>
+
+          <div className="flex gap-16 sm:gap-24">
+            {FOOTER_COLUMNS.map((column) => (
+              <div key={column.heading} className="flex flex-col gap-4">
+                <p className="font-mono text-2xl text-[#aa800c]">
+                  {column.heading}
+                </p>
+                {column.links.map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
-                    target="_"
-                    className={`text-xs font-medium text-stone-100/90 transition-colors hover:text-white sm:text-sm ${FOCUS_RING}`}
+                    {...(link.external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                    className={FOOTER_LINK}
                   >
                     {link.label}
                   </a>
                 ))}
-              </nav>
-            </header>
-
-            <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
-              <span className={`mb-6 ${EYEBROW}`}>
-                PUBLIC MAINNET COMING SOON
-              </span>
-
-              <h1 className="max-w-3xl text-4xl font-medium leading-[1.05] tracking-tight text-[#dddcd1] sm:text-6xl lg:text-7xl">
-                <span className="block">Open Market</span>
-                <span className="mt-3 block sm:mt-4">
-                  Making On{" "}
-                  <span className="text-amber-400">Solana.</span>
-                </span>
-              </h1>
-
-              <p className="mt-6 max-w-xl text-sm leading-relaxed text-stone-300/85 sm:text-base">
-                A{" "}
-                <Highlighter action="underline" color="#fbbf24" strokeWidth={2}>
-                  fully on chain
-                </Highlighter>{" "}
-                order book exchange on Solana that gives market makers their own
-                private accounts, cheap repricing, and protection from toxic
-                arbitrage.
-              </p>
-
-              <GlassButton
-                className="mt-8"
-                contentClassName="flex items-center gap-2"
-              >
-                Talk to us
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </GlassButton>
-            </div>
-
-            <div className="flex flex-col items-center gap-2 pb-10 text-stone-400">
-              <span className="text-xs">Scroll to Discover</span>
-              <ChevronDown
-                className="h-4 w-4 motion-safe:animate-bounce"
-                aria-hidden="true"
-              />
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <section className="px-6 pb-16 pt-10 sm:px-10 sm:pt-16 lg:px-16">
-        <div className="mx-auto flex max-w-[1312px] flex-col items-center gap-6 rounded-2xl bg-white/[0.03] px-6 py-6 sm:flex-row sm:justify-between sm:px-10">
-          <span className="whitespace-nowrap text-xs font-medium uppercase tracking-widest text-stone-500">
-            Trusted by
-          </span>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            {TRUSTED_BY.map((brand) => (
-              <div
-                key={brand.name}
-                className="flex items-center gap-2 opacity-60 transition-opacity hover:opacity-100"
-              >
-                <Image
-                  src={brand.src}
-                  alt={brand.hasWordmark ? brand.name : ""}
-                  aria-hidden={brand.hasWordmark ? undefined : true}
-                  width={brand.width}
-                  height={brand.height}
-                  className={
-                    brand.chip
-                      ? "h-6 w-6 rounded-full object-cover sm:h-7 sm:w-7"
-                      : `h-5 w-auto sm:h-6 ${brand.invert ? "brightness-0 invert" : ""}`
-                  }
-                />
-                {!brand.hasWordmark && (
-                  <span className="text-base font-semibold text-stone-200 sm:text-lg">
-                    {brand.name}
-                  </span>
-                )}
               </div>
             ))}
           </div>
         </div>
-      </section>
-
-      <section id="protocol" className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
-        <div className="mx-auto max-w-[1312px]">
-          <span className={MONO_BADGE}>Protocol</span>
-
-          <h2 className="mt-6 max-w-xl text-4xl font-medium leading-[1.05] tracking-tight text-[#dddcd1] sm:text-5xl lg:text-6xl">
-            Built for the
-            <br />
-            <span className="font-playfair font-normal text-[#ab7610]">
-              real bottleneck
-            </span>
-          </h2>
-
-          <p className="mt-6 max-w-xl text-sm leading-relaxed text-stone-300/85 sm:text-base">
-            PropAMMs are the gold standard for liquidity on Solana, but they
-            are a closed club. Operated by single teams with proprietary
-            infrastructure, locked behind years of custom engineering.
-          </p>
-
-          <div className="mt-14 grid grid-cols-[minmax(0,406px)] gap-6 sm:grid-cols-[repeat(2,minmax(0,406px))] lg:grid-cols-[repeat(3,minmax(0,406px))]">
-            {PROTOCOL_FEATURES.map((feature) => (
-              <div
-                key={feature.title}
-                className="feature-card-glow flex aspect-[203/181] flex-col justify-center gap-6 rounded-[46px] px-10 py-8 sm:px-[53px]"
-              >
-                <h3 className="font-grotesque text-3xl font-semibold tracking-[-0.97px] text-[#e8e8e8] sm:text-4xl lg:text-[50px] lg:leading-[60px]">
-                  {feature.title}
-                </h3>
-                <p className="font-grotesque text-lg leading-7 tracking-[0.24px] text-[#e8e8e8] lg:text-[24px] lg:leading-8">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="team" className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
-        <div className="mx-auto max-w-[1312px]">
-          <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <span className={MONO_BADGE}>Our Teams</span>
-              <h2 className="font-geist mt-6 max-w-md text-4xl font-medium leading-[1.05] tracking-tight text-[#f6f4e8] sm:text-5xl lg:text-6xl lg:tracking-[-3px]">
-                Meet the Experts
-              </h2>
-            </div>
-            <p className="font-geist max-w-sm text-sm leading-relaxed tracking-[-0.32px] text-white/90 sm:text-base">
-              Core contributors dedicated to building reliable infrastructure
-              for the Solana ecosystem
-            </p>
-          </div>
-
-          <div className="mt-14 grid grid-cols-[minmax(0,320px)] gap-[22px] sm:grid-cols-[repeat(2,minmax(0,320px))] lg:grid-cols-[repeat(4,minmax(0,320px))]">
-            {TEAM.map((member) => (
-              <div
-                key={member.name}
-                className="relative aspect-[320/535] w-full overflow-hidden rounded-[34px] border border-white/5"
-              >
-                <Image
-                  src={member.src}
-                  alt={member.name}
-                  fill
-                  sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-black/10" />
-                <div className="absolute inset-x-0 bottom-8 flex flex-col items-center px-4 text-center">
-                  <p className="font-sora text-[28px] font-semibold leading-relaxed text-[#fffcfc]">
-                    {member.name}
-                  </p>
-                  <p className="font-geist text-base tracking-[-0.32px] text-white/80">
-                    {member.role}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="blog" className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
-        <div className="mx-auto flex max-w-[1312px] flex-col items-center gap-[76px]">
-          <div className="flex flex-col items-center gap-[18px] text-center">
-            <span className={MONO_BADGE}>Vision</span>
-            <h2 className="font-geist text-4xl font-medium leading-[1.05] tracking-tight text-[#f6f4e8] sm:text-5xl lg:text-6xl lg:tracking-[-3px]">
-              Articles
-            </h2>
-            <p className="font-geist text-sm tracking-[-0.28px] text-white/80">
-              Our latest thinking on markets, protocol design, and Solana
-              infrastructure.
-            </p>
-          </div>
-
-          <div className="grid w-full grid-cols-[minmax(0,400px)] justify-center gap-6 sm:grid-cols-[repeat(2,minmax(0,400px))] lg:grid-cols-[repeat(3,minmax(0,400px))]">
-            {ARTICLES.map((article) => (
-              <a
-                key={article.title}
-                href={article.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`group flex h-full flex-col rounded-[34px] border border-white/5 bg-white/5 p-[13px] transition-colors hover:border-amber-400/20 hover:bg-white/[0.07] ${FOCUS_RING}`}
-              >
-                <div className="relative h-[260px] w-full overflow-hidden rounded-[20px] sm:h-[300px]">
-                  <Image
-                    src={article.src}
-                    alt={article.title}
-                    fill
-                    sizes="(min-width: 1024px) 400px, (min-width: 640px) 45vw, 90vw"
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                  />
-                </div>
-
-                <div className="mt-5 flex flex-1 flex-col">
-                  <p className="font-sora text-base font-semibold text-stone-50">
-                    {article.title}
-                  </p>
-
-                  <div className="font-geist mt-auto flex items-center justify-between pt-6 text-sm tracking-[-0.28px] text-stone-300/80">
-                    <span className="inline-flex items-center gap-2 transition-colors group-hover:text-amber-300">
-                      Read more
-                      <ArrowUpRight
-                        className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                        aria-hidden="true"
-                      />
-                    </span>
-                    <span className="text-[10px] text-white/50">
-                      {article.date}
-                    </span>
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
-        <div className="mx-auto max-w-[1312px]">
-          <div className="cta-banner-glow flex flex-col items-start gap-8 overflow-hidden rounded-[10px] px-8 py-10 sm:h-[164px] sm:flex-row sm:items-center sm:justify-between sm:px-12 sm:py-0">
-            <h2 className="font-geist capitalize text-4xl font-medium leading-[1.05] tracking-tight text-[#f6f4e8] sm:text-5xl lg:text-6xl lg:tracking-[-3px]">
-              Get early access
-            </h2>
-
-            <button
-              type="button"
-              className={`group inline-flex shrink-0 items-center gap-3 rounded-full bg-[rgba(13,30,49,0.2)] py-[7px] pl-6 pr-[7px] backdrop-blur-sm ${FOCUS_RING}`}
-            >
-              <span className="font-geist text-[17px] font-medium tracking-[-0.34px] text-[#f7f2ec]">
-                Get Access
-              </span>
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f7f2ec] text-[#161512] transition-transform group-hover:translate-x-0.5">
-                <ArrowRight className="h-5 w-5" aria-hidden="true" />
-              </span>
-            </button>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer className="bg-[#10100e] px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-      <div className="mx-auto flex max-w-[1312px] flex-col gap-16 sm:flex-row sm:items-start sm:justify-between">
-        <div className="flex flex-col gap-7">
-          <Link href="/" className={`flex items-center gap-2.5 ${FOCUS_RING}`}>
-            <Image
-              src="/logo.png"
-              alt=""
-              aria-hidden="true"
-              width={44}
-              height={44}
-              className="h-11 w-11 rounded-full object-cover"
-            />
-            <span className="font-mono text-2xl uppercase tracking-[0.72px] text-white">
-              ordr
-            </span>
-          </Link>
-          <p className="text-base text-[#84878b]">© 2026 ordr.trade</p>
-        </div>
-
-        <div className="flex gap-16 sm:gap-24">
-          {FOOTER_COLUMNS.map((column) => (
-            <div key={column.heading} className="flex flex-col gap-4">
-              <p className="font-mono text-2xl text-[#aa800c]">
-                {column.heading}
-              </p>
-              {column.links.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  {...(link.external
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                  className={FOOTER_LINK}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-    </footer>
+      </footer>
     </>
   );
 }
