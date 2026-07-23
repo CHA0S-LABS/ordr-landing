@@ -7,7 +7,7 @@ import { GlassButton } from "@/components/ui/glass-button";
 const NAV_LINKS = [
   { label: "Protocol", href: "#protocol" },
   { label: "Team", href: "#team" },
-  { label: "Twitter", href: "https://twitter.com/ordrdottrade" },
+  { label: "Twitter", href: "https://x.com/ordrtrade" },
   { label: "Blog", href: "#blog" },
 ];
 
@@ -109,6 +109,30 @@ const TEAM = [
   { name: "Arjun", role: "COO", src: "/assets/team/arjun.png" },
 ];
 
+const FOOTER_COLUMNS = [
+  {
+    heading: "Product",
+    links: [
+      { label: "Protocol", href: "#protocol" },
+      { label: "Team", href: "#team" },
+      { label: "Terms & Condition", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+    ],
+  },
+  {
+    heading: "Company",
+    links: [
+      { label: "Twitter", href: "https://x.com/ordrtrade", external: true },
+      {
+        label: "GitHub",
+        href: "https://github.com/CHA0S-LABS",
+        external: true,
+      },
+      { label: "Blog", href: "#blog" },
+    ],
+  },
+];
+
 const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 rounded-sm";
 
@@ -118,8 +142,11 @@ const EYEBROW =
 const MONO_BADGE =
   "inline-flex items-center bg-[rgba(126,122,122,0.2)] px-[10px] py-[6px] font-mono text-sm tracking-[-0.28px] text-[rgba(200,150,14,0.9)]";
 
+const FOOTER_LINK = `text-base text-[#84878b] transition-colors hover:text-stone-200 ${FOCUS_RING}`;
+
 export default function Home() {
   return (
+    <>
     <main>
       <div className="flex min-h-screen flex-col px-4 py-6 sm:px-6 sm:py-8">
         <section className="relative flex flex-1 flex-col overflow-hidden rounded-[28px] bg-neutral-950">
@@ -244,7 +271,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
+      <section id="protocol" className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
         <div className="mx-auto max-w-[1312px]">
           <span className={MONO_BADGE}>Protocol</span>
 
@@ -378,6 +405,72 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
+        <div className="mx-auto max-w-[1312px]">
+          <div className="cta-banner-glow flex flex-col items-start gap-8 overflow-hidden rounded-[10px] px-8 py-10 sm:h-[164px] sm:flex-row sm:items-center sm:justify-between sm:px-12 sm:py-0">
+            <h2 className="font-geist capitalize text-4xl font-medium leading-[1.05] tracking-tight text-[#f6f4e8] sm:text-5xl lg:text-6xl lg:tracking-[-3px]">
+              Get early access
+            </h2>
+
+            <button
+              type="button"
+              className={`group inline-flex shrink-0 items-center gap-3 rounded-full bg-[rgba(13,30,49,0.2)] py-[7px] pl-6 pr-[7px] backdrop-blur-sm ${FOCUS_RING}`}
+            >
+              <span className="font-geist text-[17px] font-medium tracking-[-0.34px] text-[#f7f2ec]">
+                Get Access
+              </span>
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f7f2ec] text-[#161512] transition-transform group-hover:translate-x-0.5">
+                <ArrowRight className="h-5 w-5" aria-hidden="true" />
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer className="bg-[#10100e] px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
+      <div className="mx-auto flex max-w-[1312px] flex-col gap-16 sm:flex-row sm:items-start sm:justify-between">
+        <div className="flex flex-col gap-7">
+          <Link href="/" className={`flex items-center gap-2.5 ${FOCUS_RING}`}>
+            <Image
+              src="/logo.png"
+              alt=""
+              aria-hidden="true"
+              width={44}
+              height={44}
+              className="h-11 w-11 rounded-full object-cover"
+            />
+            <span className="font-mono text-2xl uppercase tracking-[0.72px] text-white">
+              ordr
+            </span>
+          </Link>
+          <p className="text-base text-[#84878b]">© 2026 ordr.trade</p>
+        </div>
+
+        <div className="flex gap-16 sm:gap-24">
+          {FOOTER_COLUMNS.map((column) => (
+            <div key={column.heading} className="flex flex-col gap-4">
+              <p className="font-mono text-2xl text-[#aa800c]">
+                {column.heading}
+              </p>
+              {column.links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  {...(link.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className={FOOTER_LINK}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </footer>
+    </>
   );
 }

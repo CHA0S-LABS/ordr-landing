@@ -221,3 +221,21 @@
     inset 0 24px 36px 0 #fee880,
     inset 0 3px 9px 0 #fff;
 }
+
+/*
+ * CTA banner glow: Figma's source is a heavily gaussian-blurred (107px)
+ * gradient blob masked to the banner's rounded rect. Reproduced as a CSS
+ * radial gradient using the same white/gold/amber stops instead of
+ * shipping the blurred SVG.
+ */
+.cta-banner-glow {
+  background-color: #161512;
+  background-image: radial-gradient(
+    ellipse 900px 700px at 14% 45%,
+    #fce9a0 0%,
+    #fdce26 22%,
+    #f0b91f 40%,
+    #ad841f 58%,
+    rgba(22, 21, 18, 0) 82%
+  );
+}
