@@ -144,6 +144,30 @@ const MONO_BADGE =
 
 const FOOTER_LINK = `text-base text-[#84878b] transition-colors hover:text-stone-200 ${FOCUS_RING}`;
 
+function BrandLogo({ brand }: { brand: (typeof TRUSTED_BY)[number] }) {
+  return (
+    <div className="flex shrink-0 items-center gap-2 opacity-60 transition-opacity hover:opacity-100">
+      <Image
+        src={brand.src}
+        alt={brand.hasWordmark ? brand.name : ""}
+        aria-hidden={brand.hasWordmark ? undefined : true}
+        width={brand.width}
+        height={brand.height}
+        className={
+          brand.chip
+            ? "h-6 w-6 rounded-full object-cover sm:h-7 sm:w-7"
+            : `h-5 w-auto sm:h-6 ${brand.invert ? "brightness-0 invert" : ""}`
+        }
+      />
+      {!brand.hasWordmark && (
+        <span className="text-base font-semibold text-stone-200 sm:text-lg">
+          {brand.name}
+        </span>
+      )}
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <>
@@ -245,30 +269,21 @@ export default function Home() {
             <span className="whitespace-nowrap text-xs font-medium uppercase tracking-widest text-stone-500">
               Trusted by
             </span>
-            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+
+            <div
+              className="marquee-fade w-full overflow-hidden sm:hidden"
+              aria-hidden="true"
+            >
+              <div className="flex w-max animate-[marquee_22s_linear_infinite] items-center gap-10 motion-reduce:animate-none">
+                {[...TRUSTED_BY, ...TRUSTED_BY].map((brand, i) => (
+                  <BrandLogo key={`${brand.name}-${i}`} brand={brand} />
+                ))}
+              </div>
+            </div>
+
+            <div className="hidden flex-wrap items-center justify-center gap-x-10 gap-y-4 sm:flex">
               {TRUSTED_BY.map((brand) => (
-                <div
-                  key={brand.name}
-                  className="flex items-center gap-2 opacity-60 transition-opacity hover:opacity-100"
-                >
-                  <Image
-                    src={brand.src}
-                    alt={brand.hasWordmark ? brand.name : ""}
-                    aria-hidden={brand.hasWordmark ? undefined : true}
-                    width={brand.width}
-                    height={brand.height}
-                    className={
-                      brand.chip
-                        ? "h-6 w-6 rounded-full object-cover sm:h-7 sm:w-7"
-                        : `h-5 w-auto sm:h-6 ${brand.invert ? "brightness-0 invert" : ""}`
-                    }
-                  />
-                  {!brand.hasWordmark && (
-                    <span className="text-base font-semibold text-stone-200 sm:text-lg">
-                      {brand.name}
-                    </span>
-                  )}
-                </div>
+                <BrandLogo key={brand.name} brand={brand} />
               ))}
             </div>
           </div>
@@ -328,25 +343,25 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mt-14 grid grid-cols-[minmax(0,320px)] gap-[22px] sm:grid-cols-[repeat(2,minmax(0,320px))] lg:grid-cols-[repeat(4,minmax(0,320px))]">
+            <div className="mt-14 grid grid-cols-[repeat(2,minmax(0,160px))] gap-4 sm:grid-cols-[repeat(2,minmax(0,320px))] sm:gap-[22px] lg:grid-cols-[repeat(4,minmax(0,320px))]">
               {TEAM.map((member) => (
                 <div
                   key={member.name}
-                  className="relative aspect-[320/535] w-full overflow-hidden rounded-[34px] border border-white/5"
+                  className="relative aspect-[320/535] w-full overflow-hidden rounded-2xl border border-white/5 sm:rounded-[34px]"
                 >
                   <Image
                     src={member.src}
                     alt={member.name}
                     fill
-                    sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw"
+                    sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 45vw"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-black/10" />
-                  <div className="absolute inset-x-0 bottom-8 flex flex-col items-center px-4 text-center">
-                    <p className="font-sora text-[28px] font-semibold leading-relaxed text-[#fffcfc]">
+                  <div className="absolute inset-x-0 bottom-4 flex flex-col items-center px-2 text-center sm:bottom-8 sm:px-4">
+                    <p className="font-sora text-base font-semibold leading-relaxed text-[#fffcfc] sm:text-[28px]">
                       {member.name}
                     </p>
-                    <p className="font-geist text-base tracking-[-0.32px] text-white/80">
+                    <p className="font-geist text-xs tracking-[-0.32px] text-white/80 sm:text-base">
                       {member.role}
                     </p>
                   </div>

@@ -228,6 +228,37 @@
  * radial gradient using the same white/gold/amber stops instead of
  * shipping the blurred SVG.
  */
+/*
+ * Trusted-by logo marquee (mobile only). Renders two copies of the logo
+ * list back to back and loops by translating exactly one copy-width
+ * (-50%), so the animation restarts seamlessly.
+ */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-fade {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 12%,
+    black 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 12%,
+    black 88%,
+    transparent
+  );
+}
+
 .cta-banner-glow {
   background-color: #161512;
   background-image: radial-gradient(
