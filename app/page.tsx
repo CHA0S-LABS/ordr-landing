@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronDown } from "lucide-react";
 import { Highlighter } from "@/components/ui/highlighter";
 import { GlassButton } from "@/components/ui/glass-button";
 
@@ -78,6 +78,27 @@ const PROTOCOL_FEATURES = [
     title: "Repricing",
     description:
       "Orders are stored as offsets from the mid price, so repricing your entire book is a single O(1) update.",
+  },
+];
+
+const ARTICLES = [
+  {
+    title: "Long Live Futarchy",
+    date: "July 13, 2026",
+    href: "https://x.com/ordrtrade/status/2076552689853575598",
+    src: "/assets/blog/long-live-futarchy.jpg",
+  },
+  {
+    title: "Ordr: The OpenMM Paradigm",
+    date: "May 7, 2026",
+    href: "https://x.com/ordrtrade/status/2052350867307999623",
+    src: "/assets/blog/openmm-paradigm.png",
+  },
+  {
+    title: "Why Ordr?",
+    date: "March 23, 2026",
+    href: "https://x.com/ordrtrade/status/2036062267704484229",
+    src: "/assets/blog/why-ordr.png",
   },
 ];
 
@@ -297,6 +318,62 @@ export default function Home() {
                   </p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="blog" className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
+        <div className="mx-auto flex max-w-[1312px] flex-col items-center gap-[76px]">
+          <div className="flex flex-col items-center gap-[18px] text-center">
+            <span className={MONO_BADGE}>Vision</span>
+            <h2 className="font-geist text-4xl font-medium leading-[1.05] tracking-tight text-[#f6f4e8] sm:text-5xl lg:text-6xl lg:tracking-[-3px]">
+              Articles
+            </h2>
+            <p className="font-geist text-sm tracking-[-0.28px] text-white/80">
+              Our latest thinking on markets, protocol design, and Solana
+              infrastructure.
+            </p>
+          </div>
+
+          <div className="grid w-full grid-cols-[minmax(0,400px)] justify-center gap-6 sm:grid-cols-[repeat(2,minmax(0,400px))] lg:grid-cols-[repeat(3,minmax(0,400px))]">
+            {ARTICLES.map((article) => (
+              <a
+                key={article.title}
+                href={article.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group flex h-full flex-col rounded-[34px] border border-white/5 bg-white/5 p-[13px] transition-colors hover:border-amber-400/20 hover:bg-white/[0.07] ${FOCUS_RING}`}
+              >
+                <div className="relative h-[260px] w-full overflow-hidden rounded-[20px] sm:h-[300px]">
+                  <Image
+                    src={article.src}
+                    alt={article.title}
+                    fill
+                    sizes="(min-width: 1024px) 400px, (min-width: 640px) 45vw, 90vw"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  />
+                </div>
+
+                <div className="mt-5 flex flex-1 flex-col">
+                  <p className="font-sora text-base font-semibold text-stone-50">
+                    {article.title}
+                  </p>
+
+                  <div className="font-geist mt-auto flex items-center justify-between pt-6 text-sm tracking-[-0.28px] text-stone-300/80">
+                    <span className="inline-flex items-center gap-2 transition-colors group-hover:text-amber-300">
+                      Read more
+                      <ArrowUpRight
+                        className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <span className="text-[10px] text-white/50">
+                      {article.date}
+                    </span>
+                  </div>
+                </div>
+              </a>
             ))}
           </div>
         </div>
