@@ -81,11 +81,21 @@ const PROTOCOL_FEATURES = [
   },
 ];
 
+const TEAM = [
+  { name: "Vinaya", role: "CEO", src: "/assets/team/vinaya.png" },
+  { name: "Avhi", role: "CTO", src: "/assets/team/avhi.png" },
+  { name: "Manu", role: "CIO", src: "/assets/team/manu.png" },
+  { name: "Arjun", role: "COO", src: "/assets/team/arjun.png" },
+];
+
 const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 rounded-sm";
 
 const EYEBROW =
   "inline-flex items-center rounded-md border border-amber-400/20 bg-black/40 px-3 py-1 text-[11px] font-medium text-amber-300 sm:text-xs";
+
+const MONO_BADGE =
+  "inline-flex items-center bg-[rgba(126,122,122,0.2)] px-[10px] py-[6px] font-mono text-sm tracking-[-0.28px] text-[rgba(200,150,14,0.9)]";
 
 export default function Home() {
   return (
@@ -215,9 +225,7 @@ export default function Home() {
 
       <section className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
         <div className="mx-auto max-w-[1312px]">
-          <span className="inline-flex items-center bg-[rgba(126,122,122,0.2)] px-[10px] py-[6px] font-mono text-sm tracking-[-0.28px] text-[rgba(200,150,14,0.9)]">
-            Protocol
-          </span>
+          <span className={MONO_BADGE}>Protocol</span>
 
           <h2 className="mt-6 max-w-xl text-4xl font-medium leading-[1.05] tracking-tight text-[#dddcd1] sm:text-5xl lg:text-6xl">
             Built for the
@@ -245,6 +253,49 @@ export default function Home() {
                 <p className="font-grotesque text-lg leading-7 tracking-[0.24px] text-[#e8e8e8] lg:text-[24px] lg:leading-8">
                   {feature.description}
                 </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="team" className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
+        <div className="mx-auto max-w-[1312px]">
+          <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <span className={MONO_BADGE}>Our Teams</span>
+              <h2 className="font-geist mt-6 max-w-md text-4xl font-medium leading-[1.05] tracking-tight text-[#f6f4e8] sm:text-5xl lg:text-6xl lg:tracking-[-3px]">
+                Meet the Experts
+              </h2>
+            </div>
+            <p className="font-geist max-w-sm text-sm leading-relaxed tracking-[-0.32px] text-white/90 sm:text-base">
+              Core contributors dedicated to building reliable infrastructure
+              for the Solana ecosystem
+            </p>
+          </div>
+
+          <div className="mt-14 grid grid-cols-[minmax(0,320px)] gap-[22px] sm:grid-cols-[repeat(2,minmax(0,320px))] lg:grid-cols-[repeat(4,minmax(0,320px))]">
+            {TEAM.map((member) => (
+              <div
+                key={member.name}
+                className="relative aspect-[320/535] w-full overflow-hidden rounded-[34px] border border-white/5"
+              >
+                <Image
+                  src={member.src}
+                  alt={member.name}
+                  fill
+                  sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/10" />
+                <div className="absolute inset-x-0 bottom-8 flex flex-col items-center px-4 text-center">
+                  <p className="font-sora text-[28px] font-semibold leading-relaxed text-[#fffcfc]">
+                    {member.name}
+                  </p>
+                  <p className="font-geist text-base tracking-[-0.32px] text-white/80">
+                    {member.role}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

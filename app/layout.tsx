@@ -5,6 +5,8 @@ import {
   IBM_Plex_Mono,
   Darker_Grotesque,
   Playfair_Display,
+  Sora,
+  Geist,
 } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -40,6 +42,18 @@ const playfairDisplay = Playfair_Display({
   weight: ["400"],
 });
 
+const sora = Sora({
+  variable: "--font-sora",
+  subsets: ["latin"],
+  weight: ["600"],
+});
+
+const geist = Geist({
+  variable: "--font-geist",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
+
 export const metadata: Metadata = {
   title: "ordr.trade",
   description:
@@ -62,6 +76,8 @@ export default function RootLayout({
         ibmPlexMono.variable,
         darkerGrotesque.variable,
         playfairDisplay.variable,
+        sora.variable,
+        geist.variable,
         "font-sans",
       )}
     >
