@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins, Instrument_Serif, IBM_Plex_Mono } from "next/font/google";
+import {
+  Poppins,
+  Instrument_Serif,
+  IBM_Plex_Mono,
+  Darker_Grotesque,
+  Playfair_Display,
+} from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +28,18 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
+const darkerGrotesque = Darker_Grotesque({
+  variable: "--font-darker-grotesque",
+  subsets: ["latin"],
+  weight: ["400", "600"],
+});
+
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair-display",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
 export const metadata: Metadata = {
   title: "ordr.trade",
   description:
@@ -36,7 +54,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", poppins.variable, instrumentSerif.variable, ibmPlexMono.variable, "font-sans")}
+      className={cn(
+        "h-full",
+        "antialiased",
+        poppins.variable,
+        instrumentSerif.variable,
+        ibmPlexMono.variable,
+        darkerGrotesque.variable,
+        playfairDisplay.variable,
+        "font-sans",
+      )}
     >
       <body className="min-h-full bg-neutral-950 font-sans text-stone-100">
         {children}

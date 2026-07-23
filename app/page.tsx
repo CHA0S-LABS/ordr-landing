@@ -53,14 +53,6 @@ const TRUSTED_BY = [
     invert: false,
   },
   {
-    name: "Blueshift",
-    src: "/assets/logos/blueshift.svg",
-    width: 32,
-    height: 32,
-    hasWordmark: false,
-    invert: false,
-  },
-  {
     name: "MetaDAO",
     src: "/assets/logos/metadao.jpg",
     width: 460,
@@ -71,11 +63,29 @@ const TRUSTED_BY = [
   },
 ];
 
+const PROTOCOL_FEATURES = [
+  {
+    title: "Shard Book",
+    description:
+      "Every market maker gets their own private order book account, so there's no shared write contention slowing you down.",
+  },
+  {
+    title: "Global Vault",
+    description:
+      "One vault holds your capital across every market, with just-in-time execution the moment your order matches.",
+  },
+  {
+    title: "Repricing",
+    description:
+      "Orders are stored as offsets from the mid price, so repricing your entire book is a single O(1) update.",
+  },
+];
+
 const FOCUS_RING =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 rounded-sm";
 
 const EYEBROW =
-  "inline-flex items-center rounded-md border border-amber-400/20 bg-black/40 px-3 py-1 font-mono text-[11px] text-amber-300 sm:text-xs";
+  "inline-flex items-center rounded-md border border-amber-400/20 bg-black/40 px-3 py-1 text-[11px] font-medium text-amber-300 sm:text-xs";
 
 export default function Home() {
   return (
@@ -135,9 +145,7 @@ export default function Home() {
                 <span className="block">Open Market</span>
                 <span className="mt-3 block sm:mt-4">
                   Making On{" "}
-                  <span className="font-serif italic text-amber-400">
-                    Solana.
-                  </span>
+                  <span className="text-amber-400">Solana.</span>
                 </span>
               </h1>
 
@@ -171,8 +179,8 @@ export default function Home() {
         </section>
       </div>
 
-      <section className="px-4 pb-16 pt-10 sm:px-6 sm:pt-16">
-        <div className="flex flex-col items-center gap-6 rounded-2xl bg-white/[0.03] px-6 py-6 sm:flex-row sm:justify-between sm:px-10">
+      <section className="px-6 pb-16 pt-10 sm:px-10 sm:pt-16 lg:px-16">
+        <div className="mx-auto flex max-w-[1312px] flex-col items-center gap-6 rounded-2xl bg-white/[0.03] px-6 py-6 sm:flex-row sm:justify-between sm:px-10">
           <span className="whitespace-nowrap text-xs font-medium uppercase tracking-widest text-stone-500">
             Trusted by
           </span>
@@ -199,6 +207,44 @@ export default function Home() {
                     {brand.name}
                   </span>
                 )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
+        <div className="mx-auto max-w-[1312px]">
+          <span className="inline-flex items-center bg-[rgba(126,122,122,0.2)] px-[10px] py-[6px] font-mono text-sm tracking-[-0.28px] text-[rgba(200,150,14,0.9)]">
+            Protocol
+          </span>
+
+          <h2 className="mt-6 max-w-xl text-4xl font-medium leading-[1.05] tracking-tight text-[#dddcd1] sm:text-5xl lg:text-6xl">
+            Built for the
+            <br />
+            <span className="font-playfair font-normal text-[#ab7610]">
+              real bottleneck
+            </span>
+          </h2>
+
+          <p className="mt-6 max-w-xl text-sm leading-relaxed text-stone-300/85 sm:text-base">
+            PropAMMs are the gold standard for liquidity on Solana, but they
+            are a closed club. Operated by single teams with proprietary
+            infrastructure, locked behind years of custom engineering.
+          </p>
+
+          <div className="mt-14 grid grid-cols-[minmax(0,406px)] gap-6 sm:grid-cols-[repeat(2,minmax(0,406px))] lg:grid-cols-[repeat(3,minmax(0,406px))]">
+            {PROTOCOL_FEATURES.map((feature) => (
+              <div
+                key={feature.title}
+                className="feature-card-glow flex aspect-[203/181] flex-col justify-center gap-6 rounded-[46px] px-10 py-8 sm:px-[53px]"
+              >
+                <h3 className="font-grotesque text-3xl font-semibold tracking-[-0.97px] text-[#e8e8e8] sm:text-4xl lg:text-[50px] lg:leading-[60px]">
+                  {feature.title}
+                </h3>
+                <p className="font-grotesque text-lg leading-7 tracking-[0.24px] text-[#e8e8e8] lg:text-[24px] lg:leading-8">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
