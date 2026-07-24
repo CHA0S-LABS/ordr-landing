@@ -80,6 +80,11 @@ const PROTOCOL_FEATURES = [
     description:
       "Orders are stored as offsets from the mid price, so repricing your entire book is a single O(1) update.",
   },
+  {
+    title: "MEV Protection",
+    description:
+      "Orders are sequenced through ACE and Jito BAM, so market makers can cancel before predatory MEV ever touches their trade.",
+  },
 ];
 
 const ARTICLES = [
@@ -415,11 +420,11 @@ export default function Home() {
               infrastructure, locked behind years of custom engineering.
             </p>
 
-            <div className="mt-14 grid grid-cols-[minmax(0,406px)] gap-6 sm:grid-cols-[repeat(2,minmax(0,406px))] lg:grid-cols-[repeat(3,minmax(0,406px))]">
+            <div className="mt-14 grid grid-cols-[minmax(0,406px)] gap-6 sm:grid-cols-[repeat(2,minmax(0,406px))] lg:grid-cols-[repeat(4,minmax(0,406px))]">
               {PROTOCOL_FEATURES.map((feature) => (
                 <div
                   key={feature.title}
-                  className="feature-card-glow flex aspect-[203/181] flex-col justify-center gap-6 rounded-[46px] px-8 py-8 sm:px-8 lg:px-[53px]"
+                  className="feature-card-glow flex flex-col justify-center gap-6 rounded-[46px] px-8 py-8 sm:px-8 lg:px-[53px] lg:py-10"
                 >
                   <h3 className="font-grotesque text-3xl font-semibold tracking-[-0.97px] text-[#e8e8e8] sm:text-4xl lg:text-[50px] lg:leading-[60px]">
                     {feature.title}
