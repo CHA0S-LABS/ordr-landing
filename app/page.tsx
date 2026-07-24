@@ -109,28 +109,29 @@ const TEAM = [
   { name: "Arjun", role: "COO", src: "/assets/team/arjun.png" },
 ];
 
-const FOOTER_COLUMNS = [
-  {
-    heading: "Product",
-    links: [
-      { label: "Protocol", href: "#protocol" },
-      { label: "Team", href: "#team" },
-      { label: "Terms & Condition", href: "/terms" },
-      { label: "Privacy Policy", href: "/privacy" },
-    ],
-  },
-  {
-    heading: "Company",
-    links: [
-      { label: "Twitter", href: "https://x.com/ordrtrade", external: true },
-      {
-        label: "GitHub",
-        href: "https://github.com/CHA0S-LABS",
-        external: true,
-      },
-      { label: "Blog", href: "#blog" },
-    ],
-  },
+function XIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
+function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.337 4.695-4.566 4.943.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.744 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"
+      />
+    </svg>
+  );
+}
+
+const SOCIAL_LINKS = [
+  { label: "X", href: "https://x.com/ordrtrade", icon: XIcon },
+  { label: "GitHub", href: "https://github.com/CHA0S-LABS", icon: GithubIcon },
 ];
 
 const FOCUS_RING =
@@ -142,7 +143,7 @@ const EYEBROW =
 const MONO_BADGE =
   "inline-flex items-center bg-[rgba(126,122,122,0.2)] px-[10px] py-[6px] font-mono text-sm tracking-[-0.28px] text-[rgba(200,150,14,0.9)]";
 
-const FOOTER_LINK = `text-base text-[#84878b] transition-colors hover:text-stone-200 ${FOCUS_RING}`;
+const FOOTER_LINK = `text-sm text-white/70 transition-colors hover:text-white ${FOCUS_RING}`;
 
 function BrandLogo({ brand }: { brand: (typeof TRUSTED_BY)[number] }) {
   return (
@@ -497,33 +498,42 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <section className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
-          <div className="mx-auto max-w-[1312px]">
-            <div className="cta-banner-glow flex flex-col items-start gap-8 overflow-hidden rounded-[10px] px-8 py-10 sm:h-[164px] sm:flex-row sm:items-center sm:justify-between sm:px-12 sm:py-0">
-              <h2 className="font-geist capitalize text-4xl font-medium leading-[1.05] tracking-tight text-[#f6f4e8] sm:text-5xl lg:text-6xl lg:tracking-[-3px]">
-                Get early access
-              </h2>
-
-              <button
-                type="button"
-                className={`group inline-flex shrink-0 items-center gap-3 rounded-full bg-[rgba(13,30,49,0.2)] py-[7px] pl-6 pr-[7px] backdrop-blur-sm ${FOCUS_RING}`}
-              >
-                <span className="font-geist text-[17px] font-medium tracking-[-0.34px] text-[#f7f2ec]">
-                  Get Access
-                </span>
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f7f2ec] text-[#161512] transition-transform group-hover:translate-x-0.5">
-                  <ArrowRight className="h-5 w-5" aria-hidden="true" />
-                </span>
-              </button>
-            </div>
-          </div>
-        </section>
       </main>
 
-      <footer className="bg-[#10100e] px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto flex max-w-[1312px] flex-col gap-16 sm:flex-row sm:items-start sm:justify-between">
-          <div className="flex flex-col gap-7">
+      <footer className="relative overflow-hidden bg-[#0a0a0a] px-6 pt-14 pb-8 sm:px-10 sm:pt-20 sm:pb-10 lg:px-16">
+        <div
+          className="cta-footer-glow pointer-events-none absolute inset-0"
+          aria-hidden="true"
+        />
+
+        <div className="relative mx-auto max-w-[1312px]">
+          <div className="flex flex-col items-start gap-6 pb-10 sm:pb-14">
+            <h2 className="cta-heading-gradient font-geist text-5xl font-medium leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl lg:tracking-[-3px]">
+              Get Early
+              <br />
+              Access
+            </h2>
+            <p className="max-w-md text-sm leading-relaxed text-stone-300/85 sm:text-base">
+              Trade on a fully on-chain order book. Public mainnet is coming
+              soon.
+            </p>
+
+            <button
+              type="button"
+              className={`group inline-flex shrink-0 items-center gap-3 rounded-full bg-[rgba(13,30,49,0.2)] py-[7px] pl-6 pr-[7px] backdrop-blur-sm ${FOCUS_RING}`}
+            >
+              <span className="font-geist text-[17px] font-medium tracking-[-0.34px] text-[#f7f2ec]">
+                Get Access
+              </span>
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f7f2ec] text-[#161512] transition-transform group-hover:translate-x-0.5">
+                <ArrowRight className="h-5 w-5" aria-hidden="true" />
+              </span>
+            </button>
+          </div>
+
+          <div className="h-px w-full bg-white/10" />
+
+          <div className="flex flex-col items-center gap-6 pt-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
             <Link
               href="/"
               className={`flex items-center gap-2.5 ${FOCUS_RING}`}
@@ -532,37 +542,42 @@ export default function Home() {
                 src="/logo.png"
                 alt=""
                 aria-hidden="true"
-                width={44}
-                height={44}
-                className="h-11 w-11 rounded-full object-cover"
+                width={32}
+                height={32}
+                className="h-8 w-8 rounded-full object-cover"
               />
-              <span className="font-mono text-2xl uppercase tracking-[0.72px] text-white">
+              <span className="font-mono text-base uppercase tracking-[0.72px] text-white">
                 ordr
               </span>
             </Link>
-            <p className="text-base text-[#84878b]">© 2026 ordr.trade</p>
-          </div>
 
-          <div className="flex gap-16 sm:gap-24">
-            {FOOTER_COLUMNS.map((column) => (
-              <div key={column.heading} className="flex flex-col gap-4">
-                <p className="font-mono text-2xl text-[#aa800c]">
-                  {column.heading}
-                </p>
-                {column.links.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    {...(link.external
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
-                    className={FOOTER_LINK}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            ))}
+            <p className="text-sm text-white/50">
+              © 2026 ordr.trade. All rights reserved.
+            </p>
+
+            <div className="flex items-center gap-6">
+              <Link href="/terms" className={FOOTER_LINK}>
+                Terms of Service
+              </Link>
+              <Link href="/privacy" className={FOOTER_LINK}>
+                Privacy Policy
+              </Link>
+            </div>
+
+            <div className="flex items-center gap-4">
+              {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className={`text-white/60 transition-colors hover:text-white ${FOCUS_RING}`}
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </footer>
