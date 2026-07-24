@@ -168,6 +168,52 @@ function BrandLogo({ brand }: { brand: (typeof TRUSTED_BY)[number] }) {
   );
 }
 
+function ArticleCard({
+  article,
+  className,
+  imgHeight,
+}: {
+  article: (typeof ARTICLES)[number];
+  className?: string;
+  imgHeight: string;
+}) {
+  return (
+    <a
+      href={article.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`group relative block overflow-hidden rounded-2xl bg-[#0c0c0d] ring-[6px] ring-white/15 transition-[box-shadow] hover:ring-white/25 ${FOCUS_RING} ${className ?? ""}`}
+    >
+      <div className={`relative w-full ${imgHeight}`}>
+        <Image
+          src={article.src}
+          alt={article.title}
+          fill
+          sizes="(min-width: 1024px) 60vw, 90vw"
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 p-6">
+        <p className="font-sora text-lg">
+          <span className="font-semibold text-white">{article.title}.</span>{" "}
+          <span className="font-geist font-light text-white/65">
+            Read more
+          </span>
+        </p>
+        <div className="mt-1 flex items-center gap-1.5 text-xs text-white/50">
+          <span>{article.date}</span>
+          <ArrowUpRight
+            className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            aria-hidden="true"
+          />
+        </div>
+      </div>
+    </a>
+  );
+}
+
 export default function Home() {
   return (
     <>
@@ -417,57 +463,37 @@ export default function Home() {
         </section>
 
         <section id="blog" className="px-6 pb-20 sm:px-10 sm:pb-28 lg:px-16">
-          <div className="mx-auto flex max-w-[1312px] flex-col items-center gap-[76px]">
-            <div className="flex flex-col items-center gap-[18px] text-center">
-              <span className={MONO_BADGE}>Vision</span>
-              <h2 className="font-geist text-4xl font-medium leading-[1.05] tracking-tight text-[#f6f4e8] sm:text-5xl lg:text-6xl lg:tracking-[-3px]">
-                Articles
-              </h2>
-              <p className="font-geist text-sm tracking-[-0.28px] text-white/80">
+          <div className="mx-auto max-w-[1312px]">
+            <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <span className={MONO_BADGE}>Vision</span>
+                <h2 className="font-geist mt-6 max-w-md text-4xl font-medium leading-[1.05] tracking-tight text-[#f6f4e8] sm:text-5xl lg:text-6xl lg:tracking-[-3px]">
+                  Articles
+                </h2>
+              </div>
+              <p className="font-geist max-w-sm text-sm leading-relaxed tracking-[-0.28px] text-white/90 sm:text-base">
                 Our latest thinking on markets, protocol design, and Solana
-                infrastructure.
+                infrastructure, from execution mechanics to the research
+                behind how the protocol is built.
               </p>
             </div>
 
-            <div className="grid w-full grid-cols-[minmax(0,400px)] justify-center gap-6 sm:grid-cols-[repeat(2,minmax(0,400px))] lg:grid-cols-[repeat(3,minmax(0,400px))]">
-              {ARTICLES.map((article) => (
-                <a
-                  key={article.title}
-                  href={article.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`group flex h-full flex-col rounded-[34px] border border-white/5 bg-white/5 p-[13px] transition-colors hover:border-amber-400/20 hover:bg-white/[0.07] ${FOCUS_RING}`}
-                >
-                  <div className="relative h-[260px] w-full overflow-hidden rounded-[20px] sm:h-[300px]">
-                    <Image
-                      src={article.src}
-                      alt={article.title}
-                      fill
-                      sizes="(min-width: 1024px) 400px, (min-width: 640px) 45vw, 90vw"
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                    />
-                  </div>
-
-                  <div className="mt-5 flex flex-1 flex-col">
-                    <p className="font-sora text-base font-semibold text-stone-50">
-                      {article.title}
-                    </p>
-
-                    <div className="font-geist mt-auto flex items-center justify-between pt-6 text-sm tracking-[-0.28px] text-stone-300/80">
-                      <span className="inline-flex items-center gap-2 transition-colors group-hover:text-amber-300">
-                        Read more
-                        <ArrowUpRight
-                          className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                          aria-hidden="true"
-                        />
-                      </span>
-                      <span className="text-[10px] text-white/50">
-                        {article.date}
-                      </span>
-                    </div>
-                  </div>
-                </a>
-              ))}
+            <div className="mt-14 grid w-full grid-cols-1 gap-4 sm:grid-cols-5 sm:gap-6">
+              <ArticleCard
+                article={ARTICLES[0]}
+                className="sm:col-span-2"
+                imgHeight="h-[300px] sm:h-[420px]"
+              />
+              <ArticleCard
+                article={ARTICLES[1]}
+                className="sm:col-span-3"
+                imgHeight="h-[300px] sm:h-[420px]"
+              />
+              <ArticleCard
+                article={ARTICLES[2]}
+                className="sm:col-span-5"
+                imgHeight="h-[260px] sm:h-[320px]"
+              />
             </div>
           </div>
         </section>

@@ -256,7 +256,7 @@
 /*
  * Product screenshot tilt: exact rotate/scaleY/skewX pulled from Linear's
  * own dev-mode CSS on its hero "App" screenshot layer (not a guessed
- * matrix — this is the literal transform Linear ships).
+ * matrix, this is the literal transform Linear ships).
  */
 .app-shot-tilt {
   transform: rotate(-10.8deg) scaleY(0.95) skewX(19deg);
@@ -266,7 +266,7 @@
  * Ambient glow behind the tilted screenshot. Checked against Figma's own
  * background blobs (node 2007:7088-90): those are neutral grayscale soft
  * light streaks at low opacity (rgba(217,217,217,0.11-0.34)), not a
- * colorful glow. Reproduced the same way — mostly neutral white light,
+ * colorful glow. Reproduced the same way, mostly neutral white light,
  * with a faint amber tint mixed in so it still nods to this site's gold
  * palette instead of reading as generic gray.
  */
