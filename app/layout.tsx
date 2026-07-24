@@ -58,6 +58,11 @@ export const metadata: Metadata = {
   title: "ordr.trade",
   description:
     "A fully on chain order book exchange on Solana that gives market makers their own private accounts, cheap repricing, and protection from toxic arbitrage.",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
