@@ -270,19 +270,21 @@ export default function Home() {
                   PUBLIC MAINNET COMING SOON
                 </span>
 
-                <h1 className="max-w-3xl text-4xl font-medium leading-[1.05] tracking-tight text-[#dddcd1] sm:text-6xl lg:text-7xl">
+                <h1 className="max-w-3xl text-[25px] font-medium leading-[1.05] tracking-tight text-[#dddcd1] sm:text-6xl lg:text-7xl">
                   <span className="block">Open Market</span>
                   <span className="mt-3 flex flex-wrap items-center gap-x-3 sm:mt-4">
                     <span>Making On</span>
-                    <Image
-                      src="/assets/logos/solana.svg"
-                      alt=""
-                      aria-hidden="true"
-                      width={398}
-                      height={312}
-                      className="h-7 w-auto opacity-80 brightness-0 invert sm:h-10 lg:h-12"
-                    />
-                    <span className="text-amber-400">Solana.</span>
+                    <span className="inline-flex items-center gap-x-3">
+                      <Image
+                        src="/assets/logos/solana.svg"
+                        alt=""
+                        aria-hidden="true"
+                        width={398}
+                        height={312}
+                        className="hidden h-10 w-auto opacity-80 brightness-0 invert sm:block lg:h-12"
+                      />
+                      <span className="text-amber-400">Solana.</span>
+                    </span>
                   </span>
                 </h1>
 
@@ -415,7 +417,7 @@ export default function Home() {
               {PROTOCOL_FEATURES.map((feature) => (
                 <div
                   key={feature.title}
-                  className="feature-card-glow flex aspect-[203/181] flex-col justify-center gap-6 rounded-[46px] px-10 py-8 sm:px-[53px]"
+                  className="feature-card-glow flex aspect-[203/181] flex-col justify-center gap-6 rounded-[46px] px-8 py-8 sm:px-8 lg:px-[53px]"
                 >
                   <h3 className="font-grotesque text-3xl font-semibold tracking-[-0.97px] text-[#e8e8e8] sm:text-4xl lg:text-[50px] lg:leading-[60px]">
                     {feature.title}
