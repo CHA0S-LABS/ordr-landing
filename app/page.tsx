@@ -272,8 +272,17 @@ export default function Home() {
 
                 <h1 className="max-w-3xl text-4xl font-medium leading-[1.05] tracking-tight text-[#dddcd1] sm:text-6xl lg:text-7xl">
                   <span className="block">Open Market</span>
-                  <span className="mt-3 block sm:mt-4">
-                    Making On <span className="text-amber-400">Solana.</span>
+                  <span className="mt-3 flex flex-wrap items-center gap-x-3 sm:mt-4">
+                    <span>Making On</span>
+                    <Image
+                      src="/assets/logos/solana.svg"
+                      alt=""
+                      aria-hidden="true"
+                      width={398}
+                      height={312}
+                      className="h-7 w-auto opacity-80 brightness-0 invert sm:h-10 lg:h-12"
+                    />
+                    <span className="text-amber-400">Solana.</span>
                   </span>
                 </h1>
 
