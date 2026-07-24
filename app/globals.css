@@ -223,12 +223,6 @@
 }
 
 /*
- * CTA banner glow: Figma's source is a heavily gaussian-blurred (107px)
- * gradient blob masked to the banner's rounded rect. Reproduced as a CSS
- * radial gradient using the same white/gold/amber stops instead of
- * shipping the blurred SVG.
- */
-/*
  * Trusted-by logo marquee (mobile only). Renders two copies of the logo
  * list back to back and loops by translating exactly one copy-width
  * (-50%), so the animation restarts seamlessly.
@@ -256,6 +250,54 @@
     black 12%,
     black 88%,
     transparent
+  );
+}
+
+/*
+ * Product screenshot tilt: exact rotate/scaleY/skewX pulled from Linear's
+ * own dev-mode CSS on its hero "App" screenshot layer (not a guessed
+ * matrix — this is the literal transform Linear ships).
+ */
+.app-shot-tilt {
+  transform: rotate(-10.8deg) scaleY(0.95) skewX(19deg);
+}
+
+/*
+ * Ambient glow behind the tilted screenshot. Checked against Figma's own
+ * background blobs (node 2007:7088-90): those are neutral grayscale soft
+ * light streaks at low opacity (rgba(217,217,217,0.11-0.34)), not a
+ * colorful glow. Reproduced the same way — mostly neutral white light,
+ * with a faint amber tint mixed in so it still nods to this site's gold
+ * palette instead of reading as generic gray.
+ */
+.app-shot-glow {
+  background:
+    radial-gradient(
+      ellipse 50% 50% at 45% 40%,
+      rgba(255, 255, 255, 0.14),
+      rgba(255, 255, 255, 0) 70%
+    ),
+    radial-gradient(
+      ellipse 60% 60% at 55% 55%,
+      rgba(212, 143, 12, 0.12),
+      rgba(212, 143, 12, 0) 70%
+    );
+  filter: blur(90px);
+}
+
+/*
+ * Edge fade over the screenshot itself, same rotate/skew so it moves with
+ * the image. Figma's companion "Gradient" layer (node 2011:12760) is
+ * offset to the right/below the screenshot and fades left-to-right
+ * (transparent -> #08090a), dissolving the screenshot's right side into
+ * the background rather than a hard rectangle cutoff. Reproduced as a
+ * diagonal fade toward the bottom-right corner.
+ */
+.app-shot-fade {
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 10, 0) 55%,
+    rgba(10, 10, 10, 0.94) 100%
   );
 }
 
