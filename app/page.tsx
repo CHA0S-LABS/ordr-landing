@@ -199,9 +199,7 @@ function ArticleCard({
       <div className="absolute inset-x-0 bottom-0 p-6">
         <p className="font-sora text-lg">
           <span className="font-semibold text-white">{article.title}.</span>{" "}
-          <span className="font-geist font-light text-white/65">
-            Read more
-          </span>
+          <span className="font-geist font-light text-white/65">Read more</span>
         </p>
         <div className="mt-1 flex items-center gap-1.5 text-xs text-white/50">
           <span>{article.date}</span>
@@ -256,7 +254,6 @@ export default function Home() {
                     <a
                       key={link.label}
                       href={link.href}
-                      target="_"
                       className={`text-sm font-medium text-stone-100/90 transition-colors hover:text-white ${FOCUS_RING}`}
                     >
                       {link.label}
@@ -302,13 +299,15 @@ export default function Home() {
                   toxic arbitrage.
                 </p>
 
-                <GlassButton
-                  className="mt-8"
-                  contentClassName="flex items-center gap-2"
-                >
-                  Talk to us
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </GlassButton>
+                <a href="https://x.com/ordrtrade/" target="_blank">
+                  <GlassButton
+                    className="mt-8 cursor-pointer"
+                    contentClassName="flex items-center gap-2"
+                  >
+                    Talk to us
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </GlassButton>
+                </a>
               </div>
 
               <div className="flex flex-col items-center gap-2 pb-10 text-stone-400">
@@ -344,7 +343,7 @@ export default function Home() {
               />
             </div>
 
-            <div className="relative mt-20 hidden sm:block sm:h-[460px] lg:h-[640px]">
+            <div className="relative mt-20 hidden sm:block sm:h-[460px] lg:h-[690px]">
               <div
                 className="app-shot-glow pointer-events-none absolute inset-[-15%]"
                 aria-hidden="true"
@@ -485,8 +484,8 @@ export default function Home() {
               </div>
               <p className="font-geist max-w-sm text-sm leading-relaxed tracking-[-0.28px] text-white/90 sm:text-base">
                 Our latest thinking on markets, protocol design, and Solana
-                infrastructure, from execution mechanics to the research
-                behind how the protocol is built.
+                infrastructure, from execution mechanics to the research behind
+                how the protocol is built.
               </p>
             </div>
 
@@ -533,12 +532,18 @@ export default function Home() {
               type="button"
               className={`group inline-flex shrink-0 items-center gap-3 rounded-full bg-[rgba(13,30,49,0.2)] py-[7px] pl-6 pr-[7px] backdrop-blur-sm ${FOCUS_RING}`}
             >
-              <span className="font-geist text-[17px] font-medium tracking-[-0.34px] text-[#f7f2ec]">
-                Get Access
-              </span>
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f7f2ec] text-[#161512] transition-transform group-hover:translate-x-0.5">
+              <a
+                href="https://devnet.ordr.trade/"
+                className="font-geist text-[17px] font-medium tracking-[-0.34px] text-[#f7f2ec]"
+              >
+                Explore Devnet
+              </a>
+              <a
+                href="https://devnet.ordr.trade/"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f7f2ec] text-[#161512] transition-transform group-hover:translate-x-0.5"
+              >
                 <ArrowRight className="h-5 w-5" aria-hidden="true" />
-              </span>
+              </a>
             </button>
           </div>
 
