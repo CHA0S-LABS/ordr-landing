@@ -439,14 +439,14 @@ export default function Home() {
               {TEAM.map((member) => (
                 <div
                   key={member.name}
-                  className="relative aspect-[320/535] w-full overflow-hidden rounded-2xl border border-white/5 sm:rounded-[34px]"
+                  className="group relative aspect-[320/535] w-full overflow-hidden rounded-2xl border border-white/5 sm:rounded-[34px]"
                 >
                   <Image
                     src={member.src}
                     alt={member.name}
                     fill
                     sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 45vw"
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/10" />
                   <div className="absolute inset-x-0 bottom-4 flex flex-col items-center px-2 text-center sm:bottom-8 sm:px-4">
