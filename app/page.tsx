@@ -479,21 +479,21 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mt-14 grid w-full grid-cols-1 gap-4 sm:grid-cols-5 sm:gap-6">
+            <div className="mx-auto mt-14 grid w-full max-w-[1100px] grid-cols-1 gap-4 sm:grid-cols-5 sm:gap-6">
               <ArticleCard
                 article={ARTICLES[0]}
                 className="sm:col-span-2"
-                imgHeight="h-[300px] sm:h-[420px]"
+                imgHeight="h-[220px] sm:h-[300px]"
               />
               <ArticleCard
                 article={ARTICLES[1]}
                 className="sm:col-span-3"
-                imgHeight="h-[300px] sm:h-[420px]"
+                imgHeight="h-[220px] sm:h-[300px]"
               />
               <ArticleCard
                 article={ARTICLES[2]}
                 className="sm:col-span-5"
-                imgHeight="h-[260px] sm:h-[320px]"
+                imgHeight="h-[180px] sm:h-[220px]"
               />
             </div>
           </div>
