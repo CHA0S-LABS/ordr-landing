@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, ChevronDown } from "lucide-react";
 import { Highlighter } from "@/components/ui/highlighter";
 import { GlassButton } from "@/components/ui/glass-button";
+import { MobileNav } from "@/components/ui/mobile-nav";
 
 const NAV_LINKS = [
   { label: "Protocol", href: "#protocol" },
@@ -260,6 +261,8 @@ export default function Home() {
                     </a>
                   ))}
                 </nav>
+
+                <MobileNav links={NAV_LINKS} />
               </header>
 
               <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
@@ -534,6 +537,7 @@ export default function Home() {
             >
               <a
                 href="https://devnet.ordr.trade/"
+                target="_blank"
                 className="font-geist text-[17px] font-medium tracking-[-0.34px] text-[#f7f2ec]"
               >
                 Explore Devnet
