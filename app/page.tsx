@@ -89,6 +89,12 @@ const PROTOCOL_FEATURES = [
 
 const ARTICLES = [
   {
+    title: "Road to Ownership",
+    date: "July 24, 2026",
+    href: "https://x.com/ordrtrade/status/2080627148675793022",
+    src: "/assets/blog/road-to-ownership.png",
+  },
+  {
     title: "Long Live Futarchy",
     date: "July 13, 2026",
     href: "https://x.com/ordrtrade/status/2076552689853575598",
@@ -547,18 +553,23 @@ export default function Home() {
             <div className="mx-auto mt-14 grid w-full max-w-[1100px] grid-cols-1 gap-4 sm:grid-cols-5 sm:gap-6">
               <ArticleCard
                 article={ARTICLES[0]}
-                className="sm:col-span-2"
-                imgHeight="h-[220px] sm:h-[300px]"
-              />
-              <ArticleCard
-                article={ARTICLES[1]}
                 className="sm:col-span-3"
                 imgHeight="h-[220px] sm:h-[300px]"
               />
               <ArticleCard
+                article={ARTICLES[1]}
+                className="sm:col-span-2"
+                imgHeight="h-[220px] sm:h-[300px]"
+              />
+              <ArticleCard
                 article={ARTICLES[2]}
-                className="sm:col-span-5"
-                imgHeight="h-[180px] sm:h-[220px]"
+                className="sm:col-span-2"
+                imgHeight="h-[220px] sm:h-[300px]"
+              />
+              <ArticleCard
+                article={ARTICLES[3]}
+                className="sm:col-span-3"
+                imgHeight="h-[220px] sm:h-[300px]"
               />
             </div>
           </div>
