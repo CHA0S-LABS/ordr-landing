@@ -109,10 +109,34 @@ const ARTICLES = [
 ];
 
 const TEAM = [
-  { name: "Vinaya", role: "CEO", src: "/assets/team/vinaya.png" },
-  { name: "Avhi", role: "CTO", src: "/assets/team/avhi.png" },
-  { name: "Manu", role: "CIO", src: "/assets/team/manu.png" },
-  { name: "Arjun", role: "COO", src: "/assets/team/arjun.png" },
+  {
+    name: "Vinaya",
+    role: "CEO",
+    src: "/assets/team/vinaya.png",
+    x: "https://x.com/Vinayapr23",
+    github: "https://github.com/Vinayapr23",
+  },
+  {
+    name: "Avhi",
+    role: "CTO",
+    src: "/assets/team/avhi.png",
+    x: "https://x.com/avhidotsol",
+    github: "https://github.com/AvhiMaz",
+  },
+  {
+    name: "Manu",
+    role: "CIO",
+    src: "/assets/team/manu.png",
+    x: "https://x.com/boomheadvt",
+    github: "https://github.com/manudasari265",
+  },
+  {
+    name: "Arjun",
+    role: "COO",
+    src: "/assets/team/arjun.png",
+    x: "https://x.com/4rjunc",
+    github: "https://github.com/aarjn",
+  },
 ];
 
 function XIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -467,6 +491,29 @@ export default function Home() {
                     className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/10" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100" />
+
+                  <div className="absolute right-4 top-4 flex translate-y-2 gap-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 sm:right-6 sm:top-6">
+                    <a
+                      href={member.x}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} on X`}
+                      className={`flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-colors hover:bg-black/80 ${FOCUS_RING}`}
+                    >
+                      <XIcon className="h-4 w-4" aria-hidden="true" />
+                    </a>
+                    <a
+                      href={member.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} on GitHub`}
+                      className={`flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-colors hover:bg-black/80 ${FOCUS_RING}`}
+                    >
+                      <GithubIcon className="h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </div>
+
                   <div className="absolute inset-x-0 bottom-4 flex flex-col items-center px-2 text-center sm:bottom-8 sm:px-4">
                     <p className="font-sora text-base font-semibold leading-relaxed text-[#fffcfc] sm:text-[28px]">
                       {member.name}
