@@ -86,7 +86,7 @@ export default function RootLayout({
         "font-sans",
       )}
     >
-      <body className="min-h-full bg-neutral-950 font-sans text-stone-100">
+      <body className="min-h-full bg-neutral-950 font-sans text-stone-100 select-none">
         {children}
       </body>
     </html>
