@@ -3,7 +3,6 @@ import { XIcon, GithubIcon } from "@/components/ui/social-icons";
 export const NAV_LINKS = [
   { label: "Protocol", href: "#protocol" },
   { label: "Team", href: "#team" },
-  { label: "Twitter", href: "https://x.com/ordrtrade" },
   { label: "Blog", href: "#blog" },
 ];
 
