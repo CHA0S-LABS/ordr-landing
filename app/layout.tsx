@@ -54,14 +54,42 @@ const geist = Geist({
   weight: ["400", "500"],
 });
 
+const title = "ordr.trade";
+const description =
+  "A fully on chain order book exchange on Solana that gives market makers their own private accounts, cheap repricing, and protection from toxic arbitrage.";
+const ogImage = {
+  url: "/assets/opengraph-image.png",
+  width: 1734,
+  height: 907,
+  alt: "ordr.trade: Open Market Making on Solana",
+};
+
 export const metadata: Metadata = {
-  title: "ordr.trade",
-  description:
-    "A fully on chain order book exchange on Solana that gives market makers their own private accounts, cheap repricing, and protection from toxic arbitrage.",
+  title,
+  description,
+  metadataBase: new URL("https://ordr.trade"),
+  alternates: {
+    canonical: "https://ordr.trade",
+  },
   icons: {
     icon: "/logo.png",
     shortcut: "/logo.png",
     apple: "/logo.png",
+  },
+  openGraph: {
+    title,
+    description,
+    url: "https://ordr.trade",
+    siteName: "ordr.trade",
+    images: [ogImage],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [ogImage.url],
+    site: "@ordrtrade",
   },
 };
 
