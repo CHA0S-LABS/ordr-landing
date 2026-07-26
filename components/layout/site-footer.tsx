@@ -20,8 +20,7 @@ export function SiteFooter() {
             Access
           </h2>
           <p className="max-w-md text-sm leading-relaxed text-stone-300/85 sm:text-base">
-            Trade on a fully on-chain order book. Public mainnet is coming
-            soon.
+            Trade on a fully on-chain order book. Public mainnet is coming soon.
           </p>
 
           <button
@@ -65,16 +64,13 @@ export function SiteFooter() {
             © 2026 ordr.trade. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-6">
-            <Link href="/terms" className={FOOTER_LINK}>
-              Terms of Service
-            </Link>
-            <Link href="/privacy" className={FOOTER_LINK}>
-              Privacy Policy
-            </Link>
-          </div>
-
           <div className="flex items-center gap-4">
+            <div className="flex items-center gap-6">
+              <Link href="/terms" className={FOOTER_LINK}>
+                Terms of Service
+              </Link>
+            </div>
+
             {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
               <a
                 key={label}

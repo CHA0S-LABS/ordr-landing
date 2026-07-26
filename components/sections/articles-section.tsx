@@ -15,8 +15,8 @@ export function ArticlesSection() {
           </div>
           <p className="font-geist max-w-sm text-sm leading-relaxed tracking-[-0.28px] text-white/90 sm:text-base">
             Our latest thinking on markets, protocol design, and Solana
-            infrastructure, from execution mechanics to the research behind
-            how the protocol is built.
+            infrastructure, from execution mechanics to the research behind how
+            the protocol is built.
           </p>
         </div>
 
