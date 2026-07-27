@@ -36,6 +36,7 @@ export function SiteFooter() {
             </a>
             <a
               href="https://devnet.ordr.trade/"
+              target="_blank"
               className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f7f2ec] text-[#161512] transition-transform group-hover:translate-x-0.5"
             >
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
