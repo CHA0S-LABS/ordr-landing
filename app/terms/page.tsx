@@ -63,12 +63,26 @@ const SECTIONS = [
       "You agree to cover our reasonable costs (including legal fees) arising from any claim related to your use of the Interface or Protocol, your breach of these Terms, or your violation of any law.",
     ],
   },
+
   {
     heading: "10. Dispute Resolution",
     body: [
-      "Before filing any claim, contact us at legal@ordr.trade and give us 30 days to resolve it informally. If that doesn't work, disputes are settled by binding, individual arbitration under the ICC Arbitration Rules, seated in the Cayman Islands, rather than in court, and you waive the right to bring or join a class action. You can opt out of arbitration (not the class-action waiver) by written notice within 30 days of first agreeing to these Terms. Small-claims matters, requests for injunctive relief, and IP disputes are exempt and may go to court.",
+      <>
+        Before filing any claim, contact us at{" "}
+        <a className="underline" href="mailto:legal@ordr.trade">
+          legal@ordr.trade
+        </a>{" "}
+        and give us 30 days to resolve it informally. If that does not work,
+        disputes are settled by binding, individual arbitration under the ICC
+        Arbitration Rules, seated in the Cayman Islands, rather than in court,
+        and you waive the right to bring or join a class action. You can opt out
+        of arbitration (not the class-action waiver) by written notice within 30
+        days of first agreeing to these Terms. Small-claims matters, requests
+        for injunctive relief, and IP disputes are exempt and may go to court.
+      </>,
     ],
   },
+
   {
     heading: "11. Governing Law",
     body: [
@@ -87,9 +101,18 @@ const SECTIONS = [
       "These Terms, together with our Privacy Policy, are the entire agreement between you and us. If any provision is found unenforceable, the rest remains in effect, and our failure to enforce a provision isn't a waiver of it. We may assign these Terms freely; you may not without our consent. Sections 4–11 survive termination of your access to the Interface. We may update these Terms at any time; continued use after an update means you accept the revised Terms.",
     ],
   },
+
   {
     heading: "14. Contact",
-    body: ["Questions about these Terms: legal@ordr.trade."],
+    body: [
+      <>
+        Questions about these Terms:{" "}
+        <a className="underline" href="mailto:legal@ordr.trade">
+          legal@ordr.trade
+        </a>
+        .
+      </>,
+    ],
   },
 ];
 
