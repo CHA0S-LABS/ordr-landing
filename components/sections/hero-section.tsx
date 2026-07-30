@@ -1,21 +1,38 @@
+"use client";
+
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { EYEBROW } from "@/lib/constants";
 import { Highlighter } from "@/components/ui/highlighter";
 import { GlassButton } from "@/components/ui/glass-button";
 import { SiteHeader } from "@/components/layout/site-header";
 
+const UnicornScene = dynamic(() => import("unicornstudio-react"), {
+  ssr: false,
+});
+
 export function HeroSection() {
   return (
     <div className="flex min-h-screen flex-col px-4 py-6 sm:px-6 sm:py-8">
       <section className="relative flex flex-1 flex-col overflow-hidden rounded-[28px] bg-neutral-950">
-        <Image
-          src="/assets/hero.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
+        <div className="absolute inset-0">
+          <UnicornScene
+            projectId="izuFQ7gcRCb9uQ9HwRa1"
+            width="100%"
+            height="100%"
+            scale={1}
+            dpi={1.5}
+            className="h-full w-full"
+          />
+        </div>
+
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(60% 50% at 50% 55%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 45%, rgba(0,0,0,0) 75%)",
+          }}
         />
 
         <div className="relative flex flex-1 flex-col">
@@ -46,7 +63,7 @@ export function HeroSection() {
 
             <p className="mt-6 max-w-xl text-sm leading-relaxed text-stone-300/85 sm:text-base">
               A{" "}
-              <Highlighter action="underline" color="#fbbf24" strokeWidth={2}>
+              <Highlighter action="underline" color="#ffffff" strokeWidth={2}>
                 fully on chain
               </Highlighter>{" "}
               order book exchange on Solana that gives market makers their
